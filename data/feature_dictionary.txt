@@ -1,0 +1,32 @@
+--Explanation of Song Features Used for Modeling--
+
+● Song duration - length of the song in seconds 
+ 
+● BPM - beats per minute (how fast the song is)
+
+● Total number of steps 
+
+● Number of changes in BPM, if any  
+
+● Number of jumps, hands, and quads - any time a player steps on 2, 3, or 4 arrows at the same time  
+
+● Song density - number of steps or notes per second of the song
+
+● Peak NPS - the highest density value 
+
+● Number of song measures containing a “stream” - number of measures with continued steps with
+no break valued at a 16th note or higher
+  
+● Number of crossovers, footswitches, jacks, sideswitches, and brackets
+(each of these is a technical element requiring a particular style of
+stepping)  
+
+● Number of “mines” - number of "arrows" that are meant to be purposefully avoided
+due to them “exploding” if stepped on and decreasing the player’s score
+
+● Classification of whether the chart is a “stamina” chart or not - this is one
+of the most important distinctions because difficulty ratings for stamina
+songs look very different from other songs. Stamina songs typically start
+north of 2.5 minutes long and some even exceed several hours! To
+address this kind of outlying information, it may be worth splitting the
+data into “stamina” data and “non-stamina” data.
