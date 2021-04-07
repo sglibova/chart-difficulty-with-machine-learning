@@ -1,32 +1,89 @@
---Explanation of Song Features Used for Modeling--
+-----Explanation of Song Features Used for Modeling-----
 
-● Song duration - length of the song in seconds 
+-----target variables-----
+
+● difficulty - string containing one of the following ['Beginner, Easy, Medium, Hard, Challenge, Edit']
+
+● rating - numerical value of difficulty [1-28] 
+
+-----descriptive variables, not used in calculations-----
+
+● title - song title
+
+● artist - song artist
+
+● stepartist - ???
+
+-----song statistics, used in calculations-----
+
+● song_seconds - length of the song in seconds 
+
+● step_count - number of individual steps per chart
+
+● measure_count - number of measures per chart, comma-separated in the song files themselves  
+
+● bpm_weighted_avg - bpm of a song weighted by how long each song is at the corresponding bpm
+
+● bpm_max - max bpm of the song  
+
+● bpm_min - minimum bpm of the song
+
+● bpm_mode - most frequent bpm of the song
+
+● bpm_change_count - how often the bpm changes within the song
+
+● song_nps - notes per second
+
+● nps_per_measure_max - highest song NPS (highest density)
+
+● nps_per_measure_avg - average NPS over all measures
+
+● nps_per_measure_median - middle value of NPS over all measures
+
+● nps_per_measure_std - standard deviation of NPS by measure, or the +/- distance from the mean
+
+● nps_per_measure_mode - most frequent NPS
+
+● jumps - player steps on 2 panels at the same time
+
+● hands - player steps on 3 panels at the same time
+
+● quads - player steps on all 4 panels at the same time
+
+● holds - player steps and holds panel(s), indicated by an arrow with a smooth trail under it
+
+● mines - 'explosive' arrow, to be intentionally avoided
+
+● rolls - player must step on and repeatedly tap a panel for the entire duration of the roll, indicated by a trail (looks like a hold but jagged)
  
-● BPM - beats per minute (how fast the song is)
+● crossovers - player crosses one foot over to step on the next arrow 
 
-● Total number of steps 
+● footswitches - player steps on the same arrow with alternating feet
 
-● Number of changes in BPM, if any  
+● crossover_footswitches - 
 
-● Number of jumps, hands, and quads - any time a player steps on 2, 3, or 4 arrows at the same time  
+● jacks - player repeatedly steps on the same panel with the same foot
 
-● Song density - number of steps or notes per second of the song
+● invalid_crossovers -
 
-● Peak NPS - the highest density value 
+● stop_count - number of times the song intentionally stops
 
-● Number of song measures containing a “stream” - number of measures with continued steps with
-no break valued at a 16th note or higher
-  
-● Number of crossovers, footswitches, jacks, sideswitches, and brackets
-(each of these is a technical element requiring a particular style of
-stepping)  
+● stream_count - number of measures that are considered a stream - at least 14 notes of a measure with maximum note value of 16th
 
-● Number of “mines” - number of "arrows" that are meant to be purposefully avoided
-due to them “exploding” if stepped on and decreasing the player’s score
+-----below variables are mostly used strictly for stamina data-----
 
-● Classification of whether the chart is a “stamina” chart or not - this is one
-of the most important distinctions because difficulty ratings for stamina
-songs look very different from other songs. Stamina songs typically start
-north of 2.5 minutes long and some even exceed several hours! To
-address this kind of outlying information, it may be worth splitting the
-data into “stamina” data and “non-stamina” data.
+● stream_size_max - the largest value of back-to-back stream measures in the song
+
+● stream_size_avg - mean value of back-to-back stream measures in the song
+
+● stream_size_std - how far each stream is +/- from the mean stream size
+
+● break_count - number of 'rest' measures between streams
+
+● break_size_max - largest number of rest measures between streams
+
+● break_size_avg - average break per song
+
+● break_total - total number of breaks
+
+● break_size_std - how far each break is +/- from 
