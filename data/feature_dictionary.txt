@@ -32,11 +32,11 @@
 
 ● bpm_change_count - how often the bpm changes within the song
 
-● song_nps - notes per second
+● song_nps - notes per second, song notes/song seconds
 
 ● nps_per_measure_max - highest song NPS (highest density)
 
-● nps_per_measure_avg - average NPS over all measures
+● nps_per_measure_avg - average NPS over all measures - sum of all NPS per measure/total measures
 
 ● nps_per_measure_median - middle value of NPS over all measures
 
@@ -60,17 +60,17 @@
 
 ● footswitches - player steps on the same arrow with alternating feet
 
-● crossover_footswitches - 
+● crossover_footswitches -  
 
 ● jacks - player repeatedly steps on the same panel with the same foot
 
-● invalid_crossovers -
+● invalid_crossovers -  player crosses one foot to step on the next arrow, but stays in this position for over 9 steps with no jumps or hands (essentially crossed over for too long)
 
 ● stop_count - number of times the song intentionally stops
 
 ● stream_count - number of measures that are considered a stream - at least 14 notes of a measure with maximum note value of 16th
 
------below variables are mostly used strictly for stamina data-----
+-----below variables are mostly used for stamina data-----
 
 ● stream_size_max - the largest value of back-to-back stream measures in the song
 
