@@ -23,17 +23,16 @@ The data is extracted from each individual song file using a parser written in P
 
 
 ### Folder Structure    
-The data is stored in `data` in two folders: `stam.csv` and `not_stam.csv`. Please keep the folder structure the same way for this notebook to work. If you would like to include your own song files, it is recommended to have them in a folder inside of `data`, then using the parser to generate a csv file like so:
-
+The data is stored in `data` in two folders: `stam.csv` and `not_stam.csv`.
+Please keep the folder structure the same way for this notebook to work. If you would like to include your own song files, you can visit [This Github Repo](https://github.com/JaceTSM/sm_tools) 
+for the code to run a parser over your own song files. To use:  
 ```
-!python chart_parser.py data/your_song_folder data/your_songs.csv
+python src/python/step_parser.py path/to/your/songfiles path/to/data/yourfile.csv
 ```
-
-Then, when reading into a DataFrame, replace the 'not_stam' variable and delete the 'stam' variable:  
-
+Make sure you have the .csv file in `data` and in the notebook, change the path to look like this:  
 ```
-stam = pd.read_csv('data/your_songs.csv')
-``` 
+your_dataframe = pd.read_csv('yourfile.csv')
+```
 
 
 ### Song Features  
@@ -41,8 +40,12 @@ stam = pd.read_csv('data/your_songs.csv')
 
 ## Methods  
 ### EDA / Visualizations  
-
+[tech_distribution]('img/tech_distribution.png')
+[tech_steps]('img/tech_steps.png')  
+[stam_distribution]('img/stam_distribution.png')
+[stam_steps]('img/stam_steps.png')
 ### First Simple Model  
+[residuals_plot]('img/fsm_lr.png')
 
 ### Iterative Model Building
 
