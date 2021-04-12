@@ -1,10 +1,25 @@
 import pandas as pd
 import numpy as np
 
-'''Given a dataframe and boolean value for whether it is stamina or not, returns a new
-cleaned dataframe with NaN values and outliers removed.'''
-
 def data_cleaner(df, is_stamina = False):
+    '''Given a dataframe and boolean value for whether it is stamina or not, returns a new
+        cleaned dataframe with NaN values and outliers removed.
+        Preserves data within the 90th percentile for the following features: 
+        *Step count (97.5% for stamina data due to stamina having a much broader distribution of steps)
+        *BPM weighted average
+        *BPM change count
+        *Song NPS
+
+        For technical data, removes the following features:
+        'stream_count', 'stream_size_max', 'stream_size_avg', 'stream_size_std', 'break_count', 'break_size_max',
+        'break_size_avg', 'break_total', 'break_size_std'
+
+        Fills NaN values with median for stamina data (same features as listed above):
+        'stream_count', 'stream_size_max', 'stream_size_avg', 'stream_size_std', 'break_count', 'break_size_max', 
+        'break_size_avg', 'break_total', 'break_size_std'
+        
+        '''
+
     tech_df = pd.DataFrame([])
     stam_df = pd.DataFrame([])
     ordered_features = ['title', 'artist', 'song_seconds', 'step_count', 'measure_count', 'bpm_weighted_avg', 'bpm_max', 'bpm_min',\
@@ -20,17 +35,18 @@ def data_cleaner(df, is_stamina = False):
 
         '''Replace any negative bpm weighted averages with the median value'''
         bpm_median = stam_df.bpm_weighted_avg.median()
-        stam_df[stam_df['bpm_weighted_avg'] < 0 ] = bpm_median
+        stam_df['bpm_weighted_avg'] = np.where(stam_df['bpm_weighted_avg'] < 0 , bpm_median, stam_df['bpm_weighted_avg'])
 
         '''Examine 90th percentile of the following Stamina DataFrame features and drop any outside of the 90th percentile: 
         *Step count
         *BPM weighted average
         *BPM change count
         *Song NPS'''
+        
         #step count
         max_steps = round(stam_df.step_count.quantile(.975)) #here we are only removing the very far outliers as stamina songs tend to run long
         #bpm weighted average
-        max_bpm_avg = stam_df.bpm_weighted_avg.quantile(.9)
+        max_bpm_avg = round(stam_df.bpm_weighted_avg.quantile(.9))
         #bpm change count
         max_bpm_change = round(stam_df.bpm_change_count.quantile(.9))
         #song nps
@@ -68,9 +84,6 @@ def data_cleaner(df, is_stamina = False):
         stam_df.break_total = stam_df.break_total.replace(0, stam_df.break_total.median())
         stam_df.break_size_std = stam_df.break_size_std.replace(0, stam_df.break_size_std.median())
 
-        '''Feature engineering to capture logarithmic curve in stream_total'''
-        stam_df['stream_log_transform'] = np.where(stam_df['stream_total'] > 0, np.log(stam_df['stream_total']), stam_df['stream_total'])
-
         print(f"Returning cleaned Stamina DataFrame with {len(stam_df)} rows and {len(stam_df.columns)} columns.")
         return stam_df
 
@@ -88,9 +101,9 @@ def data_cleaner(df, is_stamina = False):
         *BPM Change Count
         *Song NPS'''
         #song seconds
-        max_seconds = tech_df.song_seconds.quantile(.90)
+        max_seconds = tech_df.song_seconds.quantile(.9)
         #step count
-        max_steps = round(tech_df.step_count.quantile(.90))
+        max_steps = round(tech_df.step_count.quantile(.9))
         #bpm weighted average
         max_bpm_avg = round(tech_df.bpm_weighted_avg.quantile(.9))
         #bpm change count
@@ -114,7 +127,7 @@ def data_cleaner(df, is_stamina = False):
                                            (tech_df['bpm_change_count'] > max_bpm_change) |
                                            (tech_df['song_nps'] > max_song_nps)].index)
 
-        tech_df['bpm_weighted_avg'] = np.where(tech_df['bpm_weighted_avg'] < 0, max_bpm_avg, tech_df['bpm_weighted_avg'])
+        tech_df['bpm_weighted_avg'] = np.where(tech_df['bpm_weighted_avg'] < 0, weighted_bpm_median, tech_df['bpm_weighted_avg'])
 
         '''Drop any song labelled as 'Beginner' with a rating above 1'''
         tech_df = tech_df.drop(tech_df.loc[(tech_df['rating'] == 1) & (tech_df['difficulty'] != 'Beginner')].index)
@@ -125,9 +138,6 @@ def data_cleaner(df, is_stamina = False):
                'break_size_avg', 'break_total', 'break_size_std']
 
         tech_df = tech_df.drop(columns = cols_to_drop, axis = 1)
-
-        '''Feature engineering to capture logarithmic curve in stream_total'''
-        tech_df['stream_log_transform'] = np.where(tech_df['stream_total'] > 0, np.log(tech_df['stream_total']), tech_df['stream_total'])
         
         print(f"Returning cleaned Tech DataFrame with {len(tech_df)} rows and {len(tech_df.columns)} columns.")
         return tech_df

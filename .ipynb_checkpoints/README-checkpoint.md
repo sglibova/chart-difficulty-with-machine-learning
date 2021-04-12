@@ -34,7 +34,6 @@ Make sure you have the .csv file in `data` and in the notebook, change the path 
 your_dataframe = pd.read_csv('yourfile.csv')
 ```
 
-The rest of the notebook must then use the ```your_dataframe``` variable from here on out.
 
 ### Song Features  
 [Here](data/feature_dictionary.txt) you can find a full list of each generated feature and a a brief description.  
@@ -83,8 +82,7 @@ Stamina:
 ### Untuned XGBoost Regressor:
 ![xgb_tech](img/xgb_tech.png)  
 Using the XGBoost regression algorithm alone drastically increased the R-squared scores to over .99 and all errors were contained within +/-1  
-![xgb_stam](img/xgb_stam.png)  
-Feature extraction proved to be slightly more challenging with this model but NPS still proved to be consistently important across both datasets.  
+![xgb_stam](img/xgb_stam.png)
 
 ## Final Model  
 
@@ -94,8 +92,8 @@ The final model was able to accurately predict on validation data with minimal e
 
 
 ## Next Steps  
-To continue this project, I aim to collect more song data and potentially re-train the model with more information, although the key features are unlikely to change. I also intend to tune a classifier model beyond the initial EDA stage.
-The immediate next step will be to deploy this model using Flask, which this README will be updated to include.  
+To continue this project, I aim to collect more song data and potentially re-train the model with more information, although the key features are unlikely to change.  
+The immediate next step will be to deploy this model using Flask, which this README will be updated to include.
 
 
 ### Repo Structure  
@@ -112,4 +110,4 @@ The immediate next step will be to deploy this model using Flask, which this REA
 └── presentation.pdf - contains a non-technical presentation of the findings
 
 ### Acknowledgements / Sources
-A huge thank you to the creators of [Stepmania](https://github.com/stepmania) and to quietly-turning and hurtpiggypig for the [Simply Love Theme](https://github.com/Simply-Love/Simply-Love-SM5) for creating and maintaining this software.
+A huge thank you to the creators of [Stepmania](https://github.com/stepmania) and to quietly-turning and hurtpiggypig for the [Simply Love Theme](https://github.com/Simply-Love/Simply-Love-SM5). 
