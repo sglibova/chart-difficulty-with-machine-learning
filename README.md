@@ -81,16 +81,30 @@ Stamina:
 `stream_total`  
 
 ### Untuned XGBoost Regressor:
-![xgb_tech](img/xgb_tech.png)  
+![xgb_tech](img/xgb_tech.png)    
 Using the XGBoost regression algorithm alone drastically increased the R-squared scores to over .99 and all errors were contained within +/-1  
-![xgb_stam](img/xgb_stam.png)  
-Feature extraction proved to be slightly more challenging with this model but NPS still proved to be consistently important across both datasets.  
+![xgb_stam](img/xgb_stam.png)    
+Feature extraction proved to be slightly more challenging with this model but NPS still proved to be consistently important across both datasets.    
 
 ## Final Model  
+Technical:  
+![tech_final](img/final_tech.png)
+Train R^2: 0.9905622716862734   
+Test R^2: 0.9682993868229007  
+Train MSE: 0.11507272737720832    
+Test MSE: 0.4042809100762739  
+
+Stamina:  
+![stam_final](img/final_stam.png)  
+Train R^2: 0.9921925792873305 
+Test R^2: 0.9792039976085652
+Train MSE: 0.11570726800700412 
+Test MSE: 0.28227917653038775  
+
 
 ## Results / Conclusions
-The final model was able to accurately predict on validation data with minimal error, although it looks like there was some challenge with higher-level difficulties
-(most likely due to there being fewer data in this realm).
+The final model was able to accurately predict on validation data with minimal error, although it looks like there was some challenge with higher-level difficulties for stamina data (most likely due to there being fewer data in this realm), and due to the variance of the technical data.  
+There was some slight overfitting with both datasets, but the R-Squared values did not differ significantly from training to test sets.  
 
 
 ## Next Steps  
@@ -99,17 +113,17 @@ The immediate next step will be to deploy this model using Flask, which this REA
 
 
 ### Repo Structure  
-├── data 
-├── img
-├── notebooks
-  └──eda_notebook.ipynb
-├── src
-  ├── visualizer.py
-  ├── data_cleaning.py
-  └── modeling_env.yml
-├── final_notebook.ipynb
-├── README.md
-└── presentation.pdf - contains a non-technical presentation of the findings
+├── data     
+├── img     
+├── notebooks    
+  └──eda_notebook.ipynb    
+├── src    
+  ├── visualizer.py    
+  ├── data_cleaning.py    
+  └── modeling_env.yml     
+├── final_notebook.ipynb    
+├── README.md     
+└── presentation.pdf - contains a non-technical presentation of the findings    
 
 ### Acknowledgements / Sources
 A huge thank you to the creators of [Stepmania](https://github.com/stepmania) and to quietly-turning and hurtpiggypig for the [Simply Love Theme](https://github.com/Simply-Love/Simply-Love-SM5) for creating and maintaining this software.
