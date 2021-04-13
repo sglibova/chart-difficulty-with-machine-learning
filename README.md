@@ -56,7 +56,9 @@ There is a much more linear relationship with the tech data than with stamina be
 
 Stamina difficulty distribution:  
 ![stam_distribution](img/stam_distribution.png)  
-Relationship of step count vs. rating for stamina data (note that there are very few songs in the upper difficulties, which skewed the correlation):
+
+Relationship of step count vs. rating for stamina data (note that there are very few songs in the upper difficulties, which skewed the correlation):  
+
 ![stam_steps](img/stam_steps.png)
 ### First Simple Model  
 ![residuals_plot](img/fsm_lr.png)  
@@ -67,8 +69,10 @@ R-squared values hovered around .95, but a few of the residuals (true value minu
 ### Ridge Regression With Low Regularization:
 Residuals for tech data:  
 ![ridge_resids](img/fsm_ridge.png)  
+
 Residuals for stamina data:  
-![stam_resids](img/fsm_ridge_stam.png)
+![stam_resids](img/fsm_ridge_stam.png)  
+
 Using ridge regression with a lower regularization values (alpha = .1 to alpha = .3) increased the model's R-squared as well as facilitated feature extraction.  
 With scaling, power transform, and ridge regression, the mean R-squared was approximately .962 and below are the largest coefficients extracted from the data.  
 Tech:  
@@ -94,14 +98,16 @@ Feature extraction proved to be slightly more challenging with this model but NP
 
 ## Final Model  
 Technical:  
-![tech_final](img/final_tech.png)
+![tech_final](img/final_tech.png)  
+
 Train R^2: 0.9905622716862734   
 Test R^2: 0.9682993868229007  
 Train MSE: 0.11507272737720832    
 Test MSE: 0.4042809100762739  
 
 Stamina:  
-![stam_final](img/final_stam.png)    
+![stam_final](img/final_stam.png)  
+
 Train R^2: 0.9921925792873305   
 Test R^2: 0.9792039976085652  
 Train MSE: 0.11570726800700412   
@@ -119,6 +125,7 @@ The immediate next step will be to deploy this model using Flask, which this REA
 
 
 ### Repo Structure  
+```
 ├── data     
 ├── img     
 ├── notebooks  
@@ -129,7 +136,8 @@ The immediate next step will be to deploy this model using Flask, which this REA
   └── sm_models_env.yml  
 ├── final_notebook.ipynb  
 ├── README.md  
-└── presentation.pdf - contains a non-technical presentation of the findings    
+└── presentation.pdf - contains a non-technical presentation of the findings 
+```
 
 ### Acknowledgements / Sources
 A huge thank you to the creators of [Stepmania](https://github.com/stepmania) and to quietly-turning and hurtpiggypig for the [Simply Love Theme](https://github.com/Simply-Love/Simply-Love-SM5) for creating and maintaining this software.
