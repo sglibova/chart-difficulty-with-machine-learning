@@ -1,5 +1,11 @@
 # Predicting StepMania Song Difficulty Using Regression  
 
+by [Svitlana Glibova](mailto:s.glibova@gmail.com)
+
+![header](img/header.jpg)  
+photo by cottonbro from Pexels  
+
+
 ## Introduction  
 ### About StepMania  
 Stepmania is an open-source software designed to support many styles of rhythm game play, but one of its most widely-used formats is for 4-panel “dance games” (like Dance Dance Revolution or In The Groove, but not licensed). The software was released in 2001 and has since been updated through version 5.3 - the concept behind this software is to allow players to play a “DDR-like” game with virtually boundless customizations, including custom themes, statistics, and charts (arrow patterns for songs).  
@@ -95,11 +101,11 @@ Train MSE: 0.11507272737720832
 Test MSE: 0.4042809100762739  
 
 Stamina:  
-![stam_final](img/final_stam.png)  
-Train R^2: 0.9921925792873305 
-Test R^2: 0.9792039976085652
-Train MSE: 0.11570726800700412 
-Test MSE: 0.28227917653038775  
+![stam_final](img/final_stam.png)    
+Train R^2: 0.9921925792873305   
+Test R^2: 0.9792039976085652  
+Train MSE: 0.11570726800700412   
+Test MSE: 0.28227917653038775    
 
 
 ## Results / Conclusions
@@ -115,14 +121,14 @@ The immediate next step will be to deploy this model using Flask, which this REA
 ### Repo Structure  
 ├── data     
 ├── img     
-├── notebooks    
-  └──eda_notebook.ipynb    
-├── src    
-  ├── visualizer.py    
-  ├── data_cleaning.py    
-  └── modeling_env.yml     
-├── final_notebook.ipynb    
-├── README.md     
+├── notebooks  
+  └──eda_notebook.ipynb  
+├── src
+  ├── visualizer.py  
+  ├── data_cleaning.py  
+  └── sm_models_env.yml  
+├── final_notebook.ipynb  
+├── README.md  
 └── presentation.pdf - contains a non-technical presentation of the findings    
 
 ### Acknowledgements / Sources
