@@ -131,6 +131,9 @@ The immediate next step will be to deploy this model using Flask, which this REA
 ├── notebooks  
   └──eda_notebook.ipynb  
 ├── src
+  ├── data
+    ├── tech_model.pkl
+    └── stam_model.pkl
   ├── visualizer.py  
   ├── data_cleaning.py  
   └── sm_models_env.yml  
