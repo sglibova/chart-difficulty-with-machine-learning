@@ -128,12 +128,14 @@ The immediate next step will be to deploy this model using Flask, which this REA
 ```
 ├── app - contains WIP Flask application and folders
 ├── data
+  ├── feature_dictionary.txt
+  ├── not_stam.csv
+  └── stam.csv
 ├── img     
 ├── notebooks  
   ├──eda_notebook.ipynb
   └──model_testing.ipynb 
 ├── src
-  ├── data
   ├── models
     ├── tech_model.pkl
     └── stam_model.pkl
