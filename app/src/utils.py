@@ -6,14 +6,10 @@ def extract_feature_values(data):
     # Replace these features with the features for your model. They need to 
     # correspond with the `name` attributes of the <input> tags
 
-    #set stamina = false by default to use the tech predictor, change to true if 'datatype' = 1
+    #set stamina = none by default to use the tech predictor, change to true if EXPECTED_FEATURES 'datatype' = 1
     stamina = False
 
-    EXPECTED_FEATURES = [
-        "step_count",
-        "song_nps",
-        "stream_total", 
-        "datatype"]
+    #expected input ["step_count", "song_nps", "stream_total", "datatype"]
 
     STAM_FEATURES = ['song_seconds', 'step_count', 'measure_count', 'bpm_weighted_avg',
        'bpm_max', 'bpm_min', 'bpm_mode', 'bpm_change_count', 'song_nps',
@@ -32,26 +28,17 @@ def extract_feature_values(data):
        'quads', 'holds', 'mines', 'rolls', 'crossovers', 'footswitches',
        'crossover_footswitches', 'jacks', 'invalid_crossovers', 'stop_count',
        'stream_total', 'stream_log_transform']
-    
-    if data[EXPECTED_FEATURES[-1]] == 1:
-        stamina = True  
-        for s_feature in STAM_FEATURES:
-            for e_feature in EXPECTED_FEATURES:
-                if s_feature == e_feature:
-                    s_feature = data[e_feature]
-                else:
-                    s_feature = 0
+
+    if data["datatype"] == 0:
+        lis = list(map(data.get, TECH_FEATURES))
+        values_list = [0 if val is None else val for val in lis]
         
-        values = [[float(data[feature]) for feature in STAM_FEATURES]]
-        return pd.DataFrame(values, columns=STAM_FEATURES), stamina
+        return pd.DataFrame(data = [values_list], columns=TECH_FEATURES), stamina
     
     else:
-        for t_feature in TECH_FEATURES:
-            for e_feature in EXPECTED_FEATURES:
-                if t_feature == e_feature:
-                    t_feature = data[e_feature]
-                else:
-                    t_feature = 0 
-
-        values = [[float(data[feature]) for feature in TECH_FEATURES]]
-        return pd.DataFrame(values, columns=TECH_FEATURES), stamina
+        stamina = True 
+        lis = list(map(data.get, STAM_FEATURES))
+        values_list = [0 if val is None else val for val in lis]
+        
+        return pd.DataFrame(data = [values_list], columns=STAM_FEATURES), stamina
+        
