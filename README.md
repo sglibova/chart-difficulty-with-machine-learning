@@ -130,7 +130,8 @@ The immediate next step will be to deploy this model using Flask, which this REA
 ├── data
 ├── img     
 ├── notebooks  
-  └──eda_notebook.ipynb  
+  ├──eda_notebook.ipynb
+  └──model_testing.ipynb 
 ├── src
   ├── data
   ├── models
