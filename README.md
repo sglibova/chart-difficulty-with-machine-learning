@@ -91,8 +91,8 @@ Stamina:
 `stream_total`  
 
 ### Untuned XGBoost Regressor:
-![xgb_tech](img/xgb_tech.png)    
-Using the XGBoost regression algorithm alone drastically increased the R-squared scores to over .99 and all errors were contained within +/-1  
+![xgb_tech](img/xgb_tech.png)      
+Using the XGBoost regression algorithm alone drastically increased the training R-squared scores to over .99, but showed some overfitting with the validation set.  
 ![xgb_stam](img/xgb_stam.png)    
 Feature extraction proved to be slightly more challenging with this model but NPS still proved to be consistently important across both datasets.    
 
@@ -126,12 +126,14 @@ The immediate next step will be to deploy this model using Flask, which this REA
 
 ### Repo Structure  
 ```
-├── data     
+├── app - contains WIP Flask application and folders
+├── data
 ├── img     
 ├── notebooks  
   └──eda_notebook.ipynb  
 ├── src
   ├── data
+  ├── models
     ├── tech_model.pkl
     └── stam_model.pkl
   ├── visualizer.py  
@@ -143,4 +145,4 @@ The immediate next step will be to deploy this model using Flask, which this REA
 ```
 
 ### Acknowledgements / Sources
-A huge thank you to the creators of [Stepmania](https://github.com/stepmania) and to quietly-turning and hurtpiggypig for the [Simply Love Theme](https://github.com/Simply-Love/Simply-Love-SM5) for creating and maintaining this software.
+A huge thank you to the creators of [Stepmania](https://github.com/stepmania) and to quietly-turning and hurtpiggypig for the [Simply Love Theme](https://github.com/Simply-Love/Simply-Love-SM5) for creating and maintaining this software, as well as all contributing stepartists for the data used in this project.
