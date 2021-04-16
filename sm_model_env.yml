@@ -58,4 +58,11 @@ dependencies:
   - xz=5.2.5=h62dcd97_0
   - zlib=1.2.11=h62dcd97_4
   - zstd=1.4.9=h19a0ad4_0
+  - pip:
+    - cloudpickle==1.6.0
+    - llvmlite==0.36.0
+    - numba==0.53.1
+    - shap==0.39.0
+    - slicer==0.0.7
+    - tqdm==4.60.0
 prefix: C:\Users\svett\anaconda3\envs\sm_tools_env

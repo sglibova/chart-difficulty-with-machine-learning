@@ -139,11 +139,11 @@ The immediate next step will be to deploy this model using Flask, which this REA
   ├── models
     ├── tech_model.pkl
     └── stam_model.pkl
-  ├── visualizer.py  
-  ├── data_cleaning.py  
-  └── sm_models_env.yml  
+  ├── visualizer.py   
+  └── data_cleaning.py  
 ├── final_notebook.ipynb  
-├── README.md  
+├── README.md
+├── sm_model_env.yml
 └── presentation.pdf - contains a non-technical presentation of the findings 
 ```
 
