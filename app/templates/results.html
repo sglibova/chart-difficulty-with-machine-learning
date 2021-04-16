@@ -5,7 +5,7 @@
       This is the title that appears in the browser tab.
       Replace it with the title of your app
     -->
-    <title>Spring Fawn Predictor</title>
+    <title>Chart Difficulty Predictor</title>
     <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='bootstrap.min.css') }}">
   </head>
   <body>
@@ -23,7 +23,7 @@
           <tbody>
             <tr>
               <td class="align-middle" style="width: 33%; text-align: right;">
-                The model's prediction is
+                Predicted difficulty ratings:
               </td>
               <td class="align-middle" style="width: 33%; text-align: center; font-size: 3em;">
                 {{ prediction }}

@@ -55,8 +55,13 @@
               form to function but they help the flow without needing a lot of
               nested <div>s to achieve the desired layout
             -->
-              <form method = "POST" action="/make_prediction" enctype = "multipart/form-data">
-              <p><input type = "file" name = "file" /></p>
+              <form method="POST" action="/make_prediction" enctype="multipart/form-data">
+              <p><input type="file" name="file" /></p>
+              <p><label for="input-2">Stamina or Tech?</label>
+              <select id="input-2" name="verifier">
+                <option value="0">Tech</option>
+                <option value="1">Stamina</option>            
+              </select></p>
               <!-- You shouldn't need to change the submit button -->
               <p><input type="submit" class="btn btn-primary btn-lg" value="Submit"></p>
             </form>

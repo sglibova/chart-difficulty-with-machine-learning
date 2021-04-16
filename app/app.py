@@ -7,6 +7,7 @@ from werkzeug.utils import secure_filename
 import pandas as pd
 import os
 
+
 app = Flask(__name__, static_url_path="/static")
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['MAX_CONTENT_LENGTH'] = 2048000
@@ -25,7 +26,8 @@ def upload_predict():
             flash('No file part')
             return redirect(url_for("index"))
 
-        file = request.files['file']
+        file=request.files['file']
+        verifier=request.form['verifier']
         #if no file selected, browser submits an empty part without filename
         if file.filename != '':
             name = secure_filename(file.filename)           
@@ -33,11 +35,10 @@ def upload_predict():
             file.save(file_path)
 
             data = pd.read_csv(file_path)
-            feature_values = extract_feature_values(data)
-            print(data) #debugging
+            feature_values, stamina = extract_feature_values(data, verifier)
+            print(data, verifier) #debugging
 
-            prediction = get_prediction(feature_values)
-
+            prediction=get_prediction(feature_values, stamina)
             return redirect(url_for("show_results", prediction=prediction))
 
         else:
@@ -49,7 +50,7 @@ def show_results():
     """ Display the results page with the provided prediction """
     
     # Extract the prediction from the URL params
-    prediction = request.args.get("prediction")
+    prediction=request.args.get("prediction")
 
     #prediction = round(float(prediction), 2)
 
