@@ -57,6 +57,10 @@ def show_results():
     # Return the results pge
     return render_template("results.html", prediction=prediction)
 
+@app.route("/contact")
+def contact():
+    """Displays my contact page."""
+    return render_template("contact.html")
 
 if __name__ == "__main__":
     serve(app, host='0.0.0.0', port=5000)
