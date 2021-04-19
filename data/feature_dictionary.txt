@@ -10,9 +10,7 @@
 
 ● title - song title
 
-● artist - song artist
-
-● stepartist - ???
+● artist - song artist  
 
 -----song statistics, used in calculations-----
 
