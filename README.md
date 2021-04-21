@@ -121,12 +121,16 @@ There was some slight overfitting with both datasets, but the R-Squared values d
 
 ## Next Steps  
 To continue this project, I aim to collect more song data and potentially re-train the model with more information, although the key features are unlikely to change. I also intend to tune a classifier model beyond the initial EDA stage.
-The immediate next step will be to deploy this model using Flask, which this README will be updated to include.  
+
+The web application of this model can be found in the below section, and the next step will be to allow the user to upload their own .sm or .ssc files, rather than having to parse the data separately before uploading the .csv.
+
+## Web Application  
+The first iteration of a web app to predict user-input data is live [here!](https://chart-predictor.herokuapp.com/) 
+The code can be found [here](https://github.com/sglibova/chart-predictor).
 
 
 ### Repo Structure  
 ```
-├── app - contains WIP Flask application and folders
 ├── data
   ├── feature_dictionary.txt
   ├── not_stam.csv
