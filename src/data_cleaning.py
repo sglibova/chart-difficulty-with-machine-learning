@@ -79,16 +79,17 @@ def data_cleaner(df, is_stamina=False):
             stam_df['bpm_weighted_avg'])
 
         print('Removing outliers and filling NaN values...\n')
-        print(f'The songs in this Stamina dataset are up to {round(max_seconds, 3)}\
-             seconds ({round(max_seconds/60, 3)} minutes) long.')
-        print(f'The songs in this Stamina dataset have up to {max_steps}\
-             steps.')
-        print(f'The songs in this Stamina dataset have a max bpm weighted average\
-             up to {max_bpm_avg} bpm.')
-        print(f'The songs in this Stamina dataset have up to {max_bpm_change}\
-             bpm changes.')
-        print(f'The songs in this Stamina dataset have up to {round(max_song_nps, 3)}\
-             NPS.\n')
+        print('The songs in this Stamina dataset are up to',
+              f'{round(max_seconds, 3)} seconds',
+              f'({round(max_seconds/60, 3)} minutes) long.')
+        print('The songs in this Stamina dataset have up to',
+              f'{max_steps}steps.')
+        print('The songs in this Stamina dataset have a max ',
+              f'bpm weighted average up to {max_bpm_avg} bpm.')
+        print('The songs in this Stamina dataset have up to',
+              f'{max_bpm_change} bpm changes.')
+        print('The songs in this Stamina dataset have up to',
+              f'{round(max_song_nps, 3)} NPS.\n')
 
         '''Because these features are valuable to stamina data,
         let's fill NaN values with the median:
@@ -128,9 +129,8 @@ def data_cleaner(df, is_stamina=False):
         # drop duplicates
         stam_df.drop_duplicates(inplace=True)
 
-        print(f"Returning cleaned Stamina DataFrame with \
-            {len(stam_df)} rows and {len(stam_df.columns)}\
-                columns.")
+        print(f'Returning cleaned Stamina DataFrame with {len(stam_df)}',
+              f'rows and {len(stam_df.columns)} columns.')
         return stam_df
 
     else:
@@ -167,15 +167,17 @@ def data_cleaner(df, is_stamina=False):
             tech_df['bpm_weighted_avg'])
 
         print('Removing outliers and filling NaN values...\n')
-        print(f'The songs in this Tech dataset are up to {round(max_seconds, 3)}\
-             seconds ({round(max_seconds/60, 3)} minutes) long.')
-        print(f'The songs in this Tech dataset have up to {max_steps} steps.')
-        print(f'The songs in this Tech dataset have a max bpm weighted average up to \
-            {max_bpm_avg} bpm.')
-        print(f'The songs in this Tech dataset have up to {max_bpm_change}\
-             bpm changes.')
-        print(f'The songs in this Tech dataset have up to {round(max_song_nps, 3)}\
-             NPS.\n')
+        print('The songs in this Tech dataset are up to',
+              f'{round(max_seconds, 3)} seconds',
+              f'({round(max_seconds/60, 3)} minutes) long.')
+        print('The songs in this Tech dataset have up to',
+              f'{max_steps} steps.')
+        print('The songs in this Tech dataset have a max ',
+              f'bpm weighted average up to {max_bpm_avg} bpm.')
+        print('The songs in this Tech dataset have up to',
+              f'{max_bpm_change} bpm changes.')
+        print('The songs in this Tech dataset have up to',
+              f'{round(max_song_nps, 3)} NPS.\n')
 
         tech_df = tech_df.drop(tech_df.loc[
             (tech_df['song_seconds'] > max_seconds) |
@@ -201,6 +203,6 @@ def data_cleaner(df, is_stamina=False):
         # drop duplicates
         tech_df.drop_duplicates(inplace=True)
 
-        print(f"Returning cleaned Tech DataFrame with {len(tech_df)}\
-             rows and {len(tech_df.columns)} columns.")
+        print(f'Returning cleaned Tech DataFrame with {len(tech_df)}',
+              f'rows and {len(tech_df.columns)} columns.')
         return tech_df
