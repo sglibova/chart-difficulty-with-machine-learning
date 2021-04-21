@@ -74,17 +74,26 @@ def data_cleaner(df, is_stamina=False):
         '''Replace any negative bpm weighted averages with the median value'''
         bpm_median = stam_df.bpm_weighted_avg.median()
         stam_df['bpm_weighted_avg'] = np.where(
-            stam_df['bpm_weighted_avg'] < 0, bpm_median, stam_df['bpm_weighted_avg'])
+            stam_df['bpm_weighted_avg'] < 0,
+            bpm_median,
+            stam_df['bpm_weighted_avg'])
 
         print('Removing outliers and filling NaN values...\n')
-        print(f'The songs in this Stamina dataset are up to {round(max_seconds, 3)} seconds ({round(max_seconds/60, 3)} minutes) long.')
-        print(f'The songs in this Stamina dataset have up to {max_steps} steps.')
-        print(f'The songs in this Stamina dataset have a max bpm weighted average up to {max_bpm_avg} bpm.')
-        print(f'The songs in this Stamina dataset have up to {max_bpm_change} bpm changes.')
-        print(f'The songs in this Stamina dataset have up to {round(max_song_nps, 3)} NPS.\n')
+        print(f'The songs in this Stamina dataset are up to {round(max_seconds, 3)}\
+             seconds ({round(max_seconds/60, 3)} minutes) long.')
+        print(f'The songs in this Stamina dataset have up to {max_steps}\
+             steps.')
+        print(f'The songs in this Stamina dataset have a max bpm weighted average\
+             up to {max_bpm_avg} bpm.')
+        print(f'The songs in this Stamina dataset have up to {max_bpm_change}\
+             bpm changes.')
+        print(f'The songs in this Stamina dataset have up to {round(max_song_nps, 3)}\
+             NPS.\n')
 
-        '''Because these features are valuable to stamina data, let's fill NaN values with the median:
-            ['stream_count', 'stream_size_max', 'stream_size_avg', 'stream_size_std', 'break_count', 'break_size_max', \
+        '''Because these features are valuable to stamina data,
+        let's fill NaN values with the median:
+            ['stream_count', 'stream_size_max', 'stream_size_avg',
+            'stream_size_std', 'break_count', 'break_size_max',
             'break_size_avg', 'break_total', 'break_size_std']
         '''
         stam_df = stam_df.fillna(0)
@@ -101,7 +110,9 @@ def data_cleaner(df, is_stamina=False):
         # drop duplicates
         stam_df.drop_duplicates(inplace=True)
 
-        print(f"Returning cleaned Stamina DataFrame with {len(stam_df)} rows and {len(stam_df.columns)} columns.")
+        print(f"Returning cleaned Stamina DataFrame with \
+            {len(stam_df)} rows and {len(stam_df.columns)}\
+                columns.")
         return stam_df
 
     else:
@@ -112,7 +123,8 @@ def data_cleaner(df, is_stamina=False):
         tech_df = tech_df.drop(
             tech_df.loc[tech_df['rating'] >= 18].index)
 
-        '''Examine 90th percentile of the following Tech DataFrame features and drop any values outside of the 90th percentile:
+        '''Examine 90th percentile of the following Tech DataFrame features
+         and drop any values outside of the 90th percentile:
         *Song Seconds
         *Step Count
         *BPM Weighted Average
@@ -131,14 +143,21 @@ def data_cleaner(df, is_stamina=False):
 
         '''Fill any negative BPM weighted average values with the median'''
         weighted_bpm_median = tech_df.bpm_weighted_avg.median()
-        tech_df['bpm_weighted_avg'] = np.where(tech_df['bpm_weighted_avg'] < 0, weighted_bpm_median, tech_df['bpm_weighted_avg'])
+        tech_df['bpm_weighted_avg'] = np.where(
+            tech_df['bpm_weighted_avg'] < 0,
+            weighted_bpm_median,
+            tech_df['bpm_weighted_avg'])
 
         print('Removing outliers and filling NaN values...\n')
-        print(f'The songs in this Tech dataset are up to {round(max_seconds, 3)} seconds ({round(max_seconds/60, 3)} minutes) long.')
+        print(f'The songs in this Tech dataset are up to {round(max_seconds, 3)}\
+             seconds ({round(max_seconds/60, 3)} minutes) long.')
         print(f'The songs in this Tech dataset have up to {max_steps} steps.')
-        print(f'The songs in this Tech dataset have a max bpm weighted average up to {max_bpm_avg} bpm.')
-        print(f'The songs in this Tech dataset have up to {max_bpm_change} bpm changes.')
-        print(f'The songs in this Tech dataset have up to {round(max_song_nps, 3)} NPS.\n')
+        print(f'The songs in this Tech dataset have a max bpm weighted average up to \
+            {max_bpm_avg} bpm.')
+        print(f'The songs in this Tech dataset have up to {max_bpm_change}\
+             bpm changes.')
+        print(f'The songs in this Tech dataset have up to {round(max_song_nps, 3)}\
+             NPS.\n')
 
         tech_df = tech_df.drop(tech_df.loc[
             (tech_df['song_seconds'] > max_seconds) |
@@ -152,7 +171,8 @@ def data_cleaner(df, is_stamina=False):
             (tech_df['rating'] == 1) &
             (tech_df['difficulty'] != 'Beginner')].index)
 
-        '''The following columns will be dropped entirely because they are not particularly useful for Tech Data'''
+        '''The following columns will be dropped entirely because they
+        are not particularly useful for Tech Data'''
 
         cols_to_drop = ['stream_count', 'stream_size_max', 'stream_size_avg',
                         'stream_size_std', 'break_count', 'break_size_max',
@@ -163,5 +183,6 @@ def data_cleaner(df, is_stamina=False):
         # drop duplicates
         tech_df.drop_duplicates(inplace=True)
 
-        print(f"Returning cleaned Tech DataFrame with {len(tech_df)} rows and {len(tech_df.columns)} columns.")
+        print(f"Returning cleaned Tech DataFrame with {len(tech_df)}\
+             rows and {len(tech_df.columns)} columns.")
         return tech_df
